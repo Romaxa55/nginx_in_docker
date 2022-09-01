@@ -14,6 +14,6 @@ services:
       - ${NGINX_LOGS}:/var/log/nginx
 
 networks:
-  jenkins:
+  nginx:
     name: nginx
     driver: bridge
