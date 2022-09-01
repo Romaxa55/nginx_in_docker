@@ -4,6 +4,6 @@ services:
   webserver:
     image: nginx:latest
     ports:
-      - 80:8080
-      - 443:8443
+      - 8080:80
+      - 8443:433
     restart: always
