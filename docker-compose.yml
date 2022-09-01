@@ -4,8 +4,8 @@ services:
   webserver:
     image: nginx:latest
     ports:
-      - 80:80
-      - 443:443
+      - 9080:80
+      - 8484:443
     restart: always
     volumes:
       - ./nginx/conf/:/etc/nginx/conf.d/:ro
