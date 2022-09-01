@@ -13,7 +13,7 @@ services:
       - DOMAINS=example1.com:example2.org
   nginx:
     container_name: nginx
-    image: nginx:alpine
+    image: nginx
     restart: always
     ports:
       - 9080:80
