@@ -1,18 +1,24 @@
 version: '3'
-
 services:
-  webserver:
-    image: nginx:latest
+  certbot:
+    container_name: certbot
+    build: github.com/buzz/certbot
+    restart: always
+    depends_on:
+      - nginx
+    volumes:
+      - ./volumes/www/acme-challenges:/var/www/acme-challenges
+      - ./volumes/etc/letsencrypt:/etc/letsencrypt
+    environment:
+      - DOMAINS=example1.com:example2.org
+  nginx:
+    container_name: nginx
+    image: nginx:alpine
+    restart: always
     ports:
       - 9080:80
-      - 8484:443
-    restart: always
+      - 9443:443
     volumes:
-      - ./nginx/conf/:/etc/nginx/conf.d/:ro
-      - ./certbot/www:/var/www/certbot/:ro
-      - ./certbot/conf/:/etc/nginx/ssl/:ro
-  certbot:
-    image: certbot/certbot:latest
-    volumes:
-      - ./certbot/www/:/var/www/certbot/:rw
-      - ./certbot/conf/:/etc/letsencrypt/:rw
+      - ./volumes/www:/var/www
+      - ./volumes/etc/nginx:/etc/nginx:ro
+      - ./volumes/etc/letsencrypt:/etc/letsencrypt:ro
