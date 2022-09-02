@@ -5,6 +5,8 @@ services:
     image: nginx:1
     container_name: nginx
     restart: unless-stopped
+    links:
+      - php
     networks:
       - nginx
     ports:
@@ -16,7 +18,7 @@ services:
   php:
     image: php:7-fpm
     volumes:
-      - ${NGINX_WEB}:/media
+      - ${NGINX_WEB}:/code
     networks:
       - nginx
     restart: unless-stopped
