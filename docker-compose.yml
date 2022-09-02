@@ -17,6 +17,10 @@ services:
     image: php:7-fpm
     volumes:
       - ${NGINX_WEB}:/media
+    networks:
+      - nginx
+    restart: unless-stopped
+    container_name: php
 
 networks:
   nginx:
