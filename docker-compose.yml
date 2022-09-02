@@ -12,7 +12,7 @@ services:
     volumes:
       - ${NGINX_CONF}:/etc/nginx/conf.d/default.conf
       - ${NGINX_LOGS}:/var/log/nginx
-      - ./web:/media
+      - ${NGINX_WEB}:/media
 
 networks:
   nginx:
