@@ -13,6 +13,8 @@ services:
       - ${NGINX_CONF}:/etc/nginx/conf.d/default.conf
       - ${NGINX_LOGS}:/var/log/nginx
       - ${NGINX_WEB}:/media
+  php:
+    image: php:7-fpm
 
 networks:
   nginx:
