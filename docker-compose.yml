@@ -18,7 +18,7 @@ services:
   php:
     image: php:7-fpm
     volumes:
-      - ${NGINX_WEB}:/code
+      - ${NGINX_WEB}:/media
     networks:
       - nginx
     restart: unless-stopped
