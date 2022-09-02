@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.3"
 services:
   nginx:
     # default ports 80, 443 - expose mapping as needed to host
@@ -26,5 +26,4 @@ services:
 
 networks:
   nginx:
-    name: nginx
     driver: bridge
